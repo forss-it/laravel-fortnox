@@ -1,0 +1,34 @@
+{
+    "name": "kfoobar/laravel-fortnox",
+    "description": "Fortnox API Client for Laravel",
+    "keywords": ["laravel", "fortnox", "bookkeep", "api"],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": "^8",
+        "ext-json": "*",
+        "illuminate/console": ">=6",
+        "illuminate/support": ">=6"
+    },
+    "autoload": {
+        "psr-4": {
+            "KFoobar\\Fortnox\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "David Villa",
+            "email": "david@kfoobar.se"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "KFoobar\\Fortnox\\FortnoxServiceProvider"
+            ],
+            "aliases": {
+                "Fortnox": "KFoobar\\Fortnox\\Facades\\Fortnox"
+            }
+        }
+    }
+}
