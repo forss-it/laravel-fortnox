@@ -7,6 +7,8 @@ use KFoobar\Fortnox\Resources\CostCenter\CostCenters;
 use KFoobar\Fortnox\Resources\Currency\Currencies;
 use KFoobar\Fortnox\Resources\Customer\Customers;
 use KFoobar\Fortnox\Resources\FinancialYear\FinancialYears;
+use KFoobar\Fortnox\Resources\Invoice\InvoiceAccruals;
+use KFoobar\Fortnox\Resources\Invoice\InvoicePayments;
 use KFoobar\Fortnox\Resources\Invoice\Invoices;
 use KFoobar\Fortnox\Resources\Price\PriceLists;
 use KFoobar\Fortnox\Resources\Project\Projects;
@@ -88,6 +90,26 @@ class Fortnox
     public function invoices()
     {
         return new Invoices($this->client);
+    }
+
+    /**
+     * Returns the invoices accruals resource.
+     *
+     * @return \KFoobar\Fortnox\Resources\Invoice\InvoiceAccruals
+     */
+    public function invoiceAccruals()
+    {
+        return new InvoiceAccruals($this->client);
+    }
+
+    /**
+     * Returns the invoices payments resource.
+     *
+     * @return \KFoobar\Fortnox\Resources\Invoice\InvoicePayments
+     */
+    public function invoicePayments()
+    {
+        return new InvoicePayments($this->client);
     }
 
     /**
