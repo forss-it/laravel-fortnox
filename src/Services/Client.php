@@ -2,6 +2,7 @@
 
 namespace KFoobar\Fortnox\Services;
 
+use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use KFoobar\Fortnox\Exceptions\FortnoxException;
@@ -32,7 +33,13 @@ class Client implements ClientInterface
      */
     public function get(string $endpoint, array $data = [], array $filter = []): mixed
     {
-        return $this->client->get($endpoint, $data);
+        $response = $this->client->get($endpoint, $data);
+
+        if ($response->failed()) {
+            $this->catchError($response);
+        }
+
+        return $response;
     }
 
     /**
@@ -48,7 +55,7 @@ class Client implements ClientInterface
         $response = $this->client->put($endpoint, $data);
 
         if ($response->failed()) {
-            ray($response->json());
+            $this->catchError($response);
         }
 
         return $response;
@@ -68,7 +75,7 @@ class Client implements ClientInterface
         $response = $this->client->post($endpoint, $data);
 
         if ($response->failed()) {
-            ray($response->json());
+            $this->catchError($response);
         }
 
         return $response;
@@ -87,10 +94,32 @@ class Client implements ClientInterface
         $response = $this->client->delete($endpoint, $data);
 
         if ($response->failed()) {
-            ray($response->json());
+            $this->catchError($response);
         }
 
         return $response;
+    }
+
+    /**
+     * Catch given error message from Fortnox.
+     *
+     * @param  \Illuminate\Http\Client\Response             $response
+     *
+     * @throws \KFoobar\Fortnox\Exceptions\FortnoxException (description)
+     *
+     * @return void
+     */
+    protected function catchError(Response $response): void
+    {
+        if ($response->json('ErrorInformation')) {
+            throw new FortnoxException(
+                sprintf(
+                    '%s (%s)',
+                    $response->json('ErrorInformation.message'),
+                    $response->json('ErrorInformation.code')
+                )
+            );
+        }
     }
 
     /**
