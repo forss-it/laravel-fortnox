@@ -16,6 +16,8 @@ trait HasUpdate
     {
         $endpoint = sprintf('%s/%s', $this->endpoint, $id);
 
-        return $this->client->put($endpoint, $data);
+        $response = $this->client->put($endpoint, $data);
+
+        return $response->json();
     }
 }

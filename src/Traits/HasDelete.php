@@ -15,6 +15,8 @@ trait HasDelete
     {
         $endpoint = sprintf('%s/%s', $this->endpoint, $id);
 
-        return $this->client->delete($endpoint);
+        $response = $this->client->delete($endpoint);
+
+        return $response->json();
     }
 }
