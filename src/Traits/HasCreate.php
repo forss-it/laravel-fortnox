@@ -13,6 +13,8 @@ trait HasCreate
      */
     public function create(array $data): mixed
     {
-        return $this->client->post($endpoint);
+        $response = $this->client->post($this->endpoint, $data);
+
+        return $response->json();
     }
 }
