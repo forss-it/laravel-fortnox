@@ -3,6 +3,7 @@
 namespace KFoobar\Fortnox\Services;
 
 use KFoobar\Fortnox\Resources\Account\Accounts;
+use KFoobar\Fortnox\Resources\Article\Articles;
 use KFoobar\Fortnox\Resources\CostCenter\CostCenters;
 use KFoobar\Fortnox\Resources\Currency\Currencies;
 use KFoobar\Fortnox\Resources\Customer\Customers;
@@ -40,6 +41,16 @@ class Fortnox
     public function accounts()
     {
         return new Accounts($this->client);
+    }
+
+    /**
+     * Returns the articles resource.
+     *
+     * @return \KFoobar\Fortnox\Resources\Article\Articles
+     */
+    public function articles()
+    {
+        return new Articles($this->client);
     }
 
     /**
