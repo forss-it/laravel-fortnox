@@ -5,6 +5,7 @@ namespace KFoobar\Fortnox\Services;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use KFoobar\Fortnox\Exceptions\FortnoxException;
 use KFoobar\Fortnox\Interfaces\ClientInterface;
 
@@ -101,6 +102,16 @@ class Client implements ClientInterface
     }
 
     /**
+     * Refresh the access token.
+     *
+     * @return mixed
+     */
+    public function refresh(): mixed
+    {
+        return $this->refreshAccessToken();
+    }
+
+    /**
      * Catch given error message from Fortnox.
      *
      * @param  \Illuminate\Http\Client\Response             $response
@@ -156,12 +167,13 @@ class Client implements ClientInterface
 
     /**
      * Gets the access token.
+     * Cache is set to 55 minutes (3300).
      *
      * @return null|string
      */
     protected function getAccessToken(): ?string
     {
-        return Cache::remember('fortnox-access-token', 3500, function () {
+        return Cache::remember('fortnox-access-token', 3300, function () {
             return $this->refreshAccessToken();
         });
     }
@@ -198,6 +210,7 @@ class Client implements ClientInterface
 
     /**
      * Refreshes the access and refresh token.
+     * Cache is set to 25 day (2160000).
      *
      * @throws \KFoobar\Fortnox\Exceptions\FortnoxException
      *
@@ -225,7 +238,7 @@ class Client implements ClientInterface
             throw new FortnoxException('Failed to retrieve refresh token from response.');
         }
 
-        Cache::put('fortnox-refresh-token', $response->json('refresh_token'), 2160000); // 25 days
+        Cache::put('fortnox-refresh-token', $response->json('refresh_token'), 2160000);
 
         return $response->json('access_token');
     }
