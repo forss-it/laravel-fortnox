@@ -53,6 +53,30 @@ class Token
     }
 
     /**
+     * Forget a token
+     * @param string $name
+     * @throws FortnoxException
+     * @return void
+     */
+    public static function forget($name) {
+        switch(config('fortnox.token_driver')) {
+            case 'cache':
+                Cache::forget($name);
+                break;
+            case 'session':
+                session()->forget($name);
+                break;
+            case 'file':
+                if(file_exists(storage_path('app/fortnox/'.$name))) {
+                    unlink(storage_path('app/fortnox/'.$name));
+                }
+                break;
+            default:
+                throw new FortnoxException('Invalid token driver: '.config('fortnox.token_driver'));
+        }
+    }
+
+    /**
      * Check if a token exists
      * @param string $name
      * @throws FortnoxException
