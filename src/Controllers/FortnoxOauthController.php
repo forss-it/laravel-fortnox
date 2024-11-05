@@ -18,11 +18,14 @@ class FortnoxOauthController extends Controller {
         $state = request()->get('state');
         
         //Validate state
-        if ($state !== Cache::get('fortnox-oauth-state')) {
-            return response()->json(['error' => 'Invalid state'], 400);
+        if (!$state || $state !== Cache::get('fortnox-oauth-state')) {
+            abort(403, 'Invalid state');
         }
 
-        dd($code);
+        FortnoxAuthenticator::authorize($code);
+
+        return redirect()->to(config('fortnox.oauth_redirect_url'));
+
     }
 
 }
