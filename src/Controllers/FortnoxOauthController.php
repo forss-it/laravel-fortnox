@@ -8,7 +8,9 @@ class FortnoxOauthController extends Controller {
     public function authorize() {
 
         $scope = explode(',', config('fortnox.scope'));
-        return redirect()->away(FortnoxAuthenticator::AuthUrl($scope));
+        $state = bin2hex(random_bytes(16));
+        Cache::put('fortnox-oauth-state', $state, 300);
+        return redirect()->away(FortnoxAuthenticator::AuthUrl($scope, $state));
     }
 
     public function callback() {

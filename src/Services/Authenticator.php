@@ -5,11 +5,12 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 class Authenticator {
 
-    public function authUrl($scope = []): string
+    public function authUrl($scope = [], $state = null): string
     {
-        $state = uuid();
-        Cache::put('fortnox-oauth-state', $state, 300);
-
+        if(is_null($state)) {
+            $state = bin2hex(random_bytes(16));
+        }
+        
         $query = http_build_query([
             'client_id'     => config('fortnox.client_id'),
             'redirect_uri'  => route('fortnox.oauth.callback'),
