@@ -125,7 +125,8 @@ class Token
      * @param int $expiration
      * @return void
      */
-    private static function writeFile(string $name, string $value, int $expiration) : void {
+    private static function writeFile(string $name, string $value, int $expiration) : void
+    {
 
         if (!is_dir(storage_path('app/fortnox'))) {
             mkdir(storage_path('app/fortnox'));

@@ -3,15 +3,16 @@ namespace KFoobar\Fortnox\Controllers;
 use KFoobar\Fortnox\Facades\FortnoxAuthenticator;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Cache;
-class FortnoxOauthController extends Controller {
+class FortnoxOauthController extends Controller 
+{
 
 
     /**
      * Redirect to Fortnox for authorization
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function authorize() {
-
+    public function authorize() 
+    {
         $scope = explode(',', config('fortnox.oauth_scope'));
         $state = bin2hex(random_bytes(16));
         Cache::put('fortnox-oauth-state', $state, 300);
@@ -22,8 +23,8 @@ class FortnoxOauthController extends Controller {
      * Callback from Fortnox after authorization
      * @return \Illuminate\Http\RedirectResponse
      */
-    
-    public function callback() {
+    public function callback() 
+    {
         $code = request()->get('code');
         $state = request()->get('state');
         
@@ -38,7 +39,6 @@ class FortnoxOauthController extends Controller {
         FortnoxAuthenticator::authorize($code);
 
         return redirect()->to(config('fortnox.oauth_redirect_url'));
-
     }
 
 }
