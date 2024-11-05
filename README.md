@@ -1,29 +1,30 @@
 # Fortnox API Client for Laravel
 
-Simplifies integration with the Fortnox API.
+A Laravel package that simplifies integration with the Fortnox API.
 
-*Please notice! This package does not yet support all available resources in the Fortnox API*
+> **Note**: This package does not yet support all available resources in the Fortnox API.
 
 ## Requirements
 
-- Laravel 6 or higher
+- Laravel 6.x or higher
 - PHP 8.0 or higher
-- Valid client id (from Fortnox)
-- Valid client secret (from Fortnox)
-- (Optional) Valid refresh token (from Fortnox)
+- A valid Fortnox client ID
+- A valid Fortnox client secret
+- (Optional) A valid refresh token if not using OAuth2 authentication
 
 ## Installation
 
-You can install the package via Composer:
+Install the package via Composer:
 
-`
-composer require kfoobar/laravel-fortnox 
-`
-
-## Settings for .env
-The `FORTNOX_REFRESH_TOKEN` is only required if the oauth autentication is not used.
-The token driver can either be `cache`, `file` or `session` and is used for storing the access_token and refresh token.
+```bash
+composer require kfoobar/laravel-fortnox
 ```
+
+## Environment Configuration
+
+Add the following settings to your `.env` file. The `FORTNOX_REFRESH_TOKEN` is only required if OAuth authentication is not used. The `FORTNOX_TOKEN_DRIVER` determines where the access and refresh tokens are stored, with options being `cache`, `file`, or `session`.
+
+```env
 FORTNOX_CLIENT_ID=
 FORTNOX_CLIENT_SECRET=
 FORTNOX_REFRESH_TOKEN= 
@@ -31,77 +32,67 @@ FORTNOX_TOKEN_DRIVER=
 FORTNOX_OAUTH_SCOPE=
 FORTNOX_REDIRECT_URL=
 ```
-## Authorization with Oauth2
 
-To authenticate against to the Fortnox integration using Oauth2 you can use the
-built in Oauth2 routes.
+## Authentication
+
+### OAuth2 Authentication
+
+To authenticate with Fortnox using OAuth2, use the built-in OAuth2 routes:
 
 In your route file:
+
 ```php
 use KFoobar\Fortnox\Facades\FortnoxAuthenticator;
 
 FortnoxAuthenticator::routes();
 ```
 
-To start the authentication you navigate to the route `fortnox.oauth.authorize`
+Navigate to the `fortnox.oauth.authorize` route to start the authorization process.  
+Set the desired OAuth scopes as a comma-separated list in `FORTNOX_OAUTH_SCOPE`. You can find valid scope options [here](https://www.fortnox.se/developer/guides-and-good-to-know/scopes).
 
-You need to provide the scope as a comma separated list in the env variable `FORTNOX_OAUTH_SCOPE`
-See valid scope at: https://www.fortnox.se/developer/guides-and-good-to-know/scopes
+Upon successful authorization, users are redirected to the URL specified in `FORTNOX_REDIRECT_URL`. You can check the authentication status with `FortnoxAuthenticator::isAuthenticated()`.
 
-Once the authorization flow is completed the user will be redirected to the url in the env variable `FORTNOX_REDIRECT_URL`
+### Using a Provided Refresh Token
 
-The login can be verified with `FortnoxAuthenticator::isAuthenticated()`
+If you already have a refresh token, you can authenticate directly using that token.
 
-## Authorization with provided refresh token
+1. Obtain a refresh token by granting access to the integration through Fortnox's OAuth2 authorization code flow.
+2. Use the authorization code to retrieve both an access token (valid for 1 hour) and a refresh token (valid for 30 days).
 
-In order to use the Fortnox API, you need a valid refresh token. 
-To get a refresh token, you need to grant access to the integration via Fortnox's OAuth2 
-authorization code flow. In that process, you are assigned an *authorization code*
-that you can use to exchange for a pair of token:
+This package automatically refreshes the access token if a valid refresh token is available. **Note**: Each time the access token is renewed, a new refresh token is issued, valid for an additional 30 days.
 
-The **access token** - which is used to authenticate all API request - is only valid 
-for 1 hour and needs to be refreshed using a refresh token. This package handles 
-that process as long you have a valid refresh token.
+To manually renew tokens, run:
 
-The **refresh token** - which is used to renew the access token - is valid for 30 days. 
-If it expires, you need to redo the OAuth2 authorization flow.
-
-Every time you renew you access token, you will be assigned a new refresh token that 
-is valid for another 30 days. It is therefore important that you regularly renew 
-the tokens so that the refresh token does not expire.
-
-You can renew your tokens with the following command:
-
-```
+```bash
 php artisan fortnox:refresh
 ```
 
-*Both the access token and the refresh token are stored in your application's cache.
-Keep this in mind when you purge the cache or changes cache driver.*
+> **Important**: Both tokens are stored based on your chosen `FORTNOX_TOKEN_DRIVER` (cache, file, or session). Be mindful of this when clearing cache or switching storage drivers.
 
-## Instructions
-The objects are following the naming convention of the Fortnox Developer Guide and has the same operations.
+## Usage
+
+This package follows Fortnox's naming conventions and operations as described in the [Fortnox Developer Guide](https://www.fortnox.se/developer/). Below are some examples:
 
 ### Retrieving Objects
 
-#### Retrieve all customers
+#### Retrieve All Customers
+
 ```php
-    Fortnox::customers()->all(); 
+Fortnox::customers()->all();
 ```
 
-#### Retrieve a single customer
+#### Retrieve a Single Customer
+
 ```php
-    Fortnox::customers()->get('1234'); 
+Fortnox::customers()->get('1234');
 ```
 
-More instructions will come soon..
-
-
+Additional usage instructions and supported operations will be added soon.
 
 ## Contributing
 
-Contributions are welcome!
+Contributions are welcome! Please feel free to submit pull requests or issues.
 
 ## License
 
-The MIT License (MIT). Please see [License File](LICENSE) for more information.
+This package is open-sourced software licensed under the [MIT License](LICENSE).
