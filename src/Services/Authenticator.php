@@ -2,6 +2,7 @@
 namespace KFoobar\Fortnox\Services;
 use KFoobar\Fortnox\Controllers\FortnoxOauthController;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Route;
 class Authenticator {
 
     public function authUrl($scope = []): string
