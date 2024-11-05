@@ -32,6 +32,7 @@ class Authenticator {
             ->post('https://apps.fortnox.se/oauth-v1/token', [
                 'grant_type'    => 'authorization_code',
                 'code'          => $code,
+                'redirect_uri'  => config('app.url'),
             ]);
         
         dd($response, $response->json());
