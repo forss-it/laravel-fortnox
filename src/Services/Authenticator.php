@@ -73,5 +73,15 @@ class Authenticator {
     }
 
 
+    /**
+     * Return true if the user is authenticated.
+     * @return bool
+     */
+    public function isAuthenticated() : bool
+    {
+        return !empty(Token::get('fortnox-access-token')) || !empty(Token::get('fortnox-refresh-token'));
+    }
+
+
 
 }
