@@ -3,12 +3,11 @@
 namespace KFoobar\Fortnox\Services;
 
 use Illuminate\Http\Client\Response;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use KFoobar\Fortnox\Exceptions\FortnoxException;
 use KFoobar\Fortnox\Interfaces\ClientInterface;
-
+use KFoobar\Fortnox\Services\Token;
 class Client implements ClientInterface
 {
     /**
@@ -173,9 +172,7 @@ class Client implements ClientInterface
      */
     protected function getAccessToken(): ?string
     {
-        return Cache::remember('fortnox-access-token', 3300, function () {
-            return $this->refreshAccessToken();
-        });
+        return Token::put('fortnox-access-token', $this->refreshAccessToken(), 3300);
     }
 
     /**
@@ -187,8 +184,9 @@ class Client implements ClientInterface
      */
     protected function getRefreshToken(): string
     {
-        if (Cache::has('fortnox-refresh-token')) {
-            return Cache::get('fortnox-refresh-token');
+        $token = Token::get('fortnox-refresh-token');
+        if ($token) {
+            return $token;
         }
 
         if (!empty(config('fortnox.refresh_token'))) {
@@ -238,7 +236,7 @@ class Client implements ClientInterface
             throw new FortnoxException('Failed to retrieve refresh token from response.');
         }
 
-        Cache::put('fortnox-refresh-token', $response->json('refresh_token'), 2160000);
+        Token::put('fortnox-refresh-token', $response->json('refresh_token'), 2160000);
 
         return $response->json('access_token');
     }
