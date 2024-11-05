@@ -27,7 +27,8 @@
                 "KFoobar\\Fortnox\\FortnoxServiceProvider"
             ],
             "aliases": {
-                "Fortnox": "KFoobar\\Fortnox\\Facades\\Fortnox"
+                "Fortnox": "KFoobar\\Fortnox\\Facades\\Fortnox",
+                "FortnoxAuthenticator": "KFoobar\\Fortnox\\Facades\\FortnoxAuthenticator"
             }
         }
     }
