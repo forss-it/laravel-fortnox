@@ -1,14 +1,8 @@
 <?php
 namespace KFoobar\Fortnox\Services;
-use KFoobar\Fortnox\Services\Client;
 use KFoobar\Fortnox\Controllers\FortnoxOauthController;
 use Illuminate\Support\Facades\Cache;
 class Authenticator {
-    protected $client;
-    public function __construct()
-    {
-        $this->client = new Client;
-    }
 
     public function authUrl($scope = []): string
     {
@@ -16,7 +10,7 @@ class Authenticator {
         Cache::put('fortnox-oauth-state', $state, 300);
 
         $query = http_build_query([
-            'client_id'     => $this->client->getClientId(),
+            'client_id'     => config('fortnox.client_id'),
             'redirect_uri'  => route('fortnox.oauth.callback'),
             'response_type' => 'code',
             'scope'         => implode(',', $scope),
