@@ -7,5 +7,6 @@ return [
     'client_secret' => env('FORTNOX_CLIENT_SECRET', ''),
     'refresh_token' => env('FORTNOX_REFRESH_TOKEN', ''),
     'timeout'       => env('FORTNOX_TIMEOUT', 5),
+    'scope'         => env('FORTNOX_SCOPE', ''), #Comma separated list of scopes
 
 ];
