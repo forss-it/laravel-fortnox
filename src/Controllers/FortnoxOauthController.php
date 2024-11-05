@@ -7,7 +7,7 @@ class FortnoxOauthController extends Controller {
 
     public function authorize() {
 
-        $scope = explode(',', config('fortnox.scope'));
+        $scope = explode(',', config('fortnox.oauth_scope'));
         $state = bin2hex(random_bytes(16));
         Cache::put('fortnox-oauth-state', $state, 300);
         return redirect()->away(FortnoxAuthenticator::AuthUrl($scope, $state));
@@ -20,6 +20,10 @@ class FortnoxOauthController extends Controller {
         //Validate state
         if (!$state || $state !== Cache::get('fortnox-oauth-state')) {
             abort(403, 'Invalid state');
+        }
+
+        if(!$code) {
+            abort(403, 'Missing code');
         }
 
         FortnoxAuthenticator::authorize($code);
