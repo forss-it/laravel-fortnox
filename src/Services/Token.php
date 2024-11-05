@@ -13,7 +13,7 @@ class Token
      */
     public static function get(string $name) : string
     {
-        switch(config('fortnox.token_storage')) {
+        switch(config('fortnox.token_driver')) {
             case 'cache':
                 return Cache::get($name);
             case 'session':
@@ -21,7 +21,7 @@ class Token
             case 'file':
                 return self::readFile($name);
             default:
-                throw new FortnoxException('Invalid token storage type: '.config('fortnox.token_storage'));
+                throw new FortnoxException('Invalid token storage driver: '.config('fortnox.token_driver'));
         }
     } 
     
@@ -35,7 +35,7 @@ class Token
      */
     public static function put(string $name, string $value, int $expiration = 60) : string
     {
-        switch(config('fortnox.token_storage')) {
+        switch(config('fortnox.token_driver')) {
             case 'cache':
                 Cache::put($name, $value, $expiration);
                 break;
@@ -46,7 +46,7 @@ class Token
                 self::writeFile($name, $value, $expiration);
                 break;
             default:
-                throw new FortnoxException('Invalid token storage type: '.config('fortnox.token_storage'));
+                throw new FortnoxException('Invalid token driver: '.config('fortnox.token_driver'));
         }
 
         return $value;
@@ -60,7 +60,7 @@ class Token
      */
     public static function has(string $name) : bool
      {
-        switch(config('fortnox.token_storage')) {
+        switch(config('fortnox.token_driver')) {
             case 'cache':
                 return Cache::has($name);
             case 'session':
@@ -68,7 +68,7 @@ class Token
             case 'file':
                 return self::readFile($name) !== null;
             default:
-                throw new FortnoxException('Invalid token storage type: '.config('fortnox.token_storage'));
+                throw new FortnoxException('Invalid token driver: '.config('fortnox.token_driver'));
         }
     }
 
