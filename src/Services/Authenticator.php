@@ -26,15 +26,15 @@ class Authenticator {
         return sprintf('https://apps.fortnox.se/oauth-v1/auth?%s', $query);
     }
 
-    public function authorize($authorizationCode) {
+    public function authorize($code) {
         $response = Http::withBasicAuth(config('fortnox.client_id'), config('fortnox.client_secret'))
             ->asForm()
             ->post('https://apps.fortnox.se/oauth-v1/token', [
                 'grant_type'    => 'authorization_code',
-                'code'          => $authorizationCode,
+                'code'          => $code,
             ]);
         
-        dd($response);
+        dd($response, $response->json());
         if ($response->failed()) {
             throw new FortnoxException('Failed to authorize.');
         }
