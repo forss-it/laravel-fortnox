@@ -15,6 +15,7 @@ class SupplierInvoices implements ResourceInterface
     use HasRetrieve;
     use HasUpdate;
 
+    protected $client;
     protected $endpoint = 'supplierinvoices';
 
     /**

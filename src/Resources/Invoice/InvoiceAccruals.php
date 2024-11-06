@@ -16,6 +16,7 @@ class InvoiceAccruals implements ResourceInterface
     use HasRetrieve;
     use HasUpdate;
 
+    protected $client;
     protected $endpoint = 'invoiceaccruals';
 
     /**

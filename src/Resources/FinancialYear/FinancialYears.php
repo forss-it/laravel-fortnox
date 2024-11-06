@@ -14,6 +14,7 @@ class FinancialYears implements ResourceInterface
     use HasCreate;
     use HasRetrieve;
 
+    protected $client;
     protected $endpoint = 'financialyears';
 
     /**
