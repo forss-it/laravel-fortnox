@@ -25,6 +25,9 @@ use KFoobar\Fortnox\Services\Client;
 
 class Fortnox
 {
+
+    protected $client;
+
     /**
      * Constructs a new instance.
      */
