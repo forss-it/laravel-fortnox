@@ -2,7 +2,7 @@
 namespace KFoobar\Fortnox\Services;
 use Illuminate\Support\Facades\Cache;
 use KFoobar\Fortnox\Exceptions\FortnoxException;
-class Token 
+class Token
 {
 
     /**
@@ -11,7 +11,7 @@ class Token
      * @throws FortnoxException
      * @return string
      */
-    public static function get(string $name) : string
+    public static function get(string $name) : ?string
     {
         switch(config('fortnox.token_driver')) {
             case 'cache':
@@ -23,8 +23,8 @@ class Token
             default:
                 throw new FortnoxException('Invalid token storage driver: '.config('fortnox.token_driver'));
         }
-    } 
-    
+    }
+
     /**
      * Store a token
      * @param string $name
@@ -102,7 +102,7 @@ class Token
      * @param string $name
      * @return string|null
      */
-    private static function readFile(string $name) : ?string 
+    private static function readFile(string $name) : ?string
     {
         if(!file_exists(storage_path('app/fortnox/'.$name))) {
             return null;
@@ -140,5 +140,5 @@ class Token
         file_put_contents(storage_path('app/fortnox/'.$name), $data);
     }
 
-    
+
 }
