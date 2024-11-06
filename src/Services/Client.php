@@ -13,6 +13,8 @@ class Client implements ClientInterface
     /**
      * Constructs a new instance.
      */
+    protected $client;
+
     public function __construct()
     {
         $this->client = Http::baseUrl($this->getHost())
