@@ -25,7 +25,7 @@ class Authenticator {
             'client_id'     => config('fortnox.client_id'),
             'redirect_uri'  => route('fortnox.oauth.callback'),
             'response_type' => 'code',
-            'scope'         => implode(',', $scope),
+            'scope'         => implode(' ', $scope),
             'state'         => $state,
             'access_type'   => 'offline',
             'account_type'  => 'service',
