@@ -7,6 +7,7 @@ use KFoobar\Fortnox\Resources\Article\Articles;
 use KFoobar\Fortnox\Resources\CostCenter\CostCenters;
 use KFoobar\Fortnox\Resources\Currency\Currencies;
 use KFoobar\Fortnox\Resources\Customer\Customers;
+use KFoobar\Fortnox\Resources\Employee\Employees;
 use KFoobar\Fortnox\Resources\FinancialYear\FinancialYears;
 use KFoobar\Fortnox\Resources\Invoice\InvoiceAccruals;
 use KFoobar\Fortnox\Resources\Invoice\InvoicePayments;
@@ -85,6 +86,18 @@ class Fortnox
     {
         return new Customers($this->client);
     }
+
+
+    /**
+     * Returns the eomployees resource.
+     *
+     * @return \KFoobar\Fortnox\Resources\Customer\Employees
+     */
+    public function employees()
+    {
+        return new Employees($this->client);
+    }
+
 
     /**
      * Returns the financial years resource.
