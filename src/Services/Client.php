@@ -136,7 +136,7 @@ class Client implements ClientInterface
             $this->catchError($response);
         }
 
-        return $response;
+        return $response->json();
     }
 
     /**
