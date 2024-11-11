@@ -1,6 +1,6 @@
 <?php
 
-namespace KFoobar\Fortnox\Resources\Project;
+namespace KFoobar\Fortnox\Resources\Inbox;
 
 use KFoobar\Fortnox\Interfaces\ClientInterface;
 use KFoobar\Fortnox\Interfaces\ResourceInterface;
