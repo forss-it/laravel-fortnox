@@ -13,6 +13,7 @@ use KFoobar\Fortnox\Resources\Invoice\InvoiceAccruals;
 use KFoobar\Fortnox\Resources\Invoice\InvoicePayments;
 use KFoobar\Fortnox\Resources\Inbox\Inboxes;
 use KFoobar\Fortnox\Resources\Invoice\Invoices;
+use KFoobar\Fortnox\Resources\Supplier\SupplierInvoiceFileConnections;
 use KFoobar\Fortnox\Resources\Price\PriceLists;
 use KFoobar\Fortnox\Resources\Project\Projects;
 use KFoobar\Fortnox\Resources\Supplier\SupplierInvoices;
@@ -187,6 +188,16 @@ class Fortnox
     public function suppliers()
     {
         return new Suppliers($this->client);
+    }
+
+    /**
+     * Returns the supplier invoice file connections resource.
+     *
+     * @return \KFoobar\Fortnox\Resources\Supplier\SupplierInvoiceFileConnections
+     */
+    public function supplierInvoiceFileConnections()
+    {
+        return new SupplierInvoiceFileConnections($this->client);
     }
 
     /**

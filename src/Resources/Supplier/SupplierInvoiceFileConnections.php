@@ -9,7 +9,7 @@ use KFoobar\Fortnox\Traits\HasDelete;
 use KFoobar\Fortnox\Traits\HasRetrieve;
 use KFoobar\Fortnox\Traits\HasUpdate;
 
-class Suppliers implements ResourceInterface
+class SupplierInvoiceFileConnections implements ResourceInterface
 {
     use HasCreate;
     use HasRetrieve;
