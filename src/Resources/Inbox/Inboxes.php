@@ -27,27 +27,15 @@ class Inbox implements ResourceInterface
     }
 
 
-    /**
+     /**
      * Uploads a file to the inbox.
      * @param string $filename
-     * @param string $fileContent
-     * @param string $folderId
-     * @param string $inboxFolderPath
+     * @param string $fileContents
+     * @param string $inboxPath
      * @return mixed
      */
-    public function upload(string $filename, string $fileContent, string $folderId, string $inboxFolderPath) : mixed
+    public function upload(string $filename, string $fileContents, string $inboxPath) : mixed
     {
-        $httpclient = $this->client->getHttpClient();
-
-
-        //Attach file to larvel http client
-        $response = $httpclient->attach(
-            'file',
-            $fileContent,
-            $filename
-        )->post($this->endpoint.'?folderid='.urldecode($folderId).'&path='.urldecode($inboxFolderPath));
-
-        return $response->json();
-
+        return $this->client->upload(sprintf('%s?path=%s', $this->endpoint, $inboxPath), $filename, $fileContents);
     }
 }

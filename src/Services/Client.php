@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Log;
 use KFoobar\Fortnox\Exceptions\FortnoxException;
 use KFoobar\Fortnox\Interfaces\ClientInterface;
 use KFoobar\Fortnox\Services\Token;
+use Psr\Http\Message\RequestInterface;
+use Spatie\HttpClient\Middleware;
+
 class Client implements ClientInterface
 {
     /**
@@ -102,15 +105,38 @@ class Client implements ClientInterface
         return $response;
     }
 
-
     /**
-     * Gets the HTTP client.
+     * Uploads a file.
      *
-     * @return \Illuminate\Http\Client\PendingRequest
+     * @param string $endpoint
+     * @param string $fileName
+     * @param string $fileContents
+     *
+     * @return mixed
      */
-    public function getHttpClient() : \Illuminate\Http\Client\PendingRequest
+    public function upload(string $endpoint, string $fileName, string $fileContents): mixed
     {
-        return $this->client;
+
+        $response = $this->client
+        ->attach('file', $fileContents, $fileName)
+        ->contentType('multipart/form-data')
+        ->withMiddleware(
+            Middleware::mapRequest(function (RequestInterface $request) {
+            $request = $request->withHeader(
+                'Content-type',
+                'multipart/form-data; boundary=' .
+                $request->getBody()->getBoundary()
+            );
+                return $request;
+            })
+        )
+        ->post($endpoint);
+
+        if ($response->failed()) {
+            $this->catchError($response);
+        }
+
+        return $response;
     }
 
     /**
