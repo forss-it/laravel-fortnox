@@ -9,7 +9,7 @@ use KFoobar\Fortnox\Exceptions\FortnoxException;
 use KFoobar\Fortnox\Interfaces\ClientInterface;
 use KFoobar\Fortnox\Services\Token;
 use Psr\Http\Message\RequestInterface;
-use Spatie\HttpClient\Middleware;
+use GuzzleHttp\Middleware;
 
 class Client implements ClientInterface
 {
