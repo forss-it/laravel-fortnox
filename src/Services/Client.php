@@ -117,7 +117,12 @@ class Client implements ClientInterface
     public function upload(string $endpoint, string $fileName, string $fileContents): mixed
     {
 
-        $response = $this->client
+        $uploadClient = Http::baseUrl($this->getHost())
+            ->timeout($this->getTimeout())
+            ->withToken($this->getAccessToken())
+            ->acceptJson();
+
+        $response = $uploadClient
         ->attach('file', $fileContents, $fileName)
         ->contentType('multipart/form-data')
         ->withMiddleware(

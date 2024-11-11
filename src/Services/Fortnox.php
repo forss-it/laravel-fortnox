@@ -11,7 +11,7 @@ use KFoobar\Fortnox\Resources\Employee\Employees;
 use KFoobar\Fortnox\Resources\FinancialYear\FinancialYears;
 use KFoobar\Fortnox\Resources\Invoice\InvoiceAccruals;
 use KFoobar\Fortnox\Resources\Invoice\InvoicePayments;
-use KFoobar\Fortnox\Resources\Inbox\Inboxes;
+use KFoobar\Fortnox\Resources\Inbox\Inbox;
 use KFoobar\Fortnox\Resources\Invoice\Invoices;
 use KFoobar\Fortnox\Resources\Supplier\SupplierInvoiceFileConnections;
 use KFoobar\Fortnox\Resources\Price\PriceLists;
@@ -117,7 +117,7 @@ class Fortnox
      * @return \KFoobar\Fortnox\Resources\Inbox\Inboxes
      */
     public function inbox() {
-        return new Inboxes($this->client);
+        return new Inbox($this->client);
     }
 
     /**

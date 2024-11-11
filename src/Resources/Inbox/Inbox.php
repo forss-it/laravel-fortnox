@@ -8,7 +8,7 @@ use KFoobar\Fortnox\Traits\HasDelete;
 use KFoobar\Fortnox\Traits\HasRetrieve;
 
 
-class Inboxes implements ResourceInterface
+class Inbox implements ResourceInterface
 {
     use HasDelete;
     use HasRetrieve;
