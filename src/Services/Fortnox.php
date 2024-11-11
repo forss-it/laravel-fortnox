@@ -18,6 +18,7 @@ use KFoobar\Fortnox\Resources\Price\PriceLists;
 use KFoobar\Fortnox\Resources\Project\Projects;
 use KFoobar\Fortnox\Resources\Supplier\SupplierInvoices;
 use KFoobar\Fortnox\Resources\Supplier\Suppliers;
+use KFoobar\Fortnox\Resources\Employee\ScheduleTimes;
 use KFoobar\Fortnox\Resources\Template\PrintTemplates;
 use KFoobar\Fortnox\Resources\Terms\TermsOfDeliveries;
 use KFoobar\Fortnox\Resources\Terms\TermsOfPayments;
@@ -208,6 +209,14 @@ class Fortnox
     public function printTemplates()
     {
         return new PrintTemplates($this->client);
+    }
+
+    /**
+     * Returns the schedule times resource.
+     * @return \KFoobar\Fortnox\Resources\Employee\ScheduleTimes
+     */
+    public function scheduleTimes() {
+        return new ScheduleTimes($this->client);
     }
 
     /**
