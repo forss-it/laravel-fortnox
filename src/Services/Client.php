@@ -102,6 +102,17 @@ class Client implements ClientInterface
         return $response;
     }
 
+
+    /**
+     * Gets the HTTP client.
+     *
+     * @return \Illuminate\Http\Client\PendingRequest
+     */
+    public function getHttpClient() : \Illuminate\Http\Client\PendingRequest
+    {
+        return $this->client;
+    }
+
     /**
      * Refresh the access token.
      *
