@@ -16,9 +16,10 @@ use KFoobar\Fortnox\Resources\Invoice\Invoices;
 use KFoobar\Fortnox\Resources\Supplier\SupplierInvoiceFileConnections;
 use KFoobar\Fortnox\Resources\Price\PriceLists;
 use KFoobar\Fortnox\Resources\Project\Projects;
+use KFoobar\Fortnox\Resources\Employee\ScheduleTimes;
+use KFoobar\Fortnox\Resources\Employee\SalaryTransactions;
 use KFoobar\Fortnox\Resources\Supplier\SupplierInvoices;
 use KFoobar\Fortnox\Resources\Supplier\Suppliers;
-use KFoobar\Fortnox\Resources\Employee\ScheduleTimes;
 use KFoobar\Fortnox\Resources\Template\PrintTemplates;
 use KFoobar\Fortnox\Resources\Terms\TermsOfDeliveries;
 use KFoobar\Fortnox\Resources\Terms\TermsOfPayments;
@@ -209,6 +210,11 @@ class Fortnox
     public function printTemplates()
     {
         return new PrintTemplates($this->client);
+    }
+
+    public function salaryTransactions()
+    {
+        return new SalaryTransactions($this->client);
     }
 
     /**
