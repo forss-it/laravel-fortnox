@@ -1,7 +1,8 @@
 <?php
 
 namespace KFoobar\Fortnox\Services;
-
+use KFoobar\Fortnox\Resources\Employee\AttendanceTransactions;
+use KFoobar\Fortnox\Resources\Employee\AbsenceTransactions;
 use KFoobar\Fortnox\Resources\Account\Accounts;
 use KFoobar\Fortnox\Resources\Article\Articles;
 use KFoobar\Fortnox\Resources\CostCenter\CostCenters;
@@ -212,9 +213,36 @@ class Fortnox
         return new PrintTemplates($this->client);
     }
 
+
+    /**
+     * Returns the salary transactions resource.
+     *
+     * @return \KFoobar\Fortnox\Resources\Employee\SalaryTransactions
+     */
     public function salaryTransactions()
     {
         return new SalaryTransactions($this->client);
+    }
+
+    /**
+     * Returns the attendance transactions resource.
+     *
+     * @return \KFoobar\Fortnox\Resources\Employee\AttendanceTransactions
+     */
+    public function attendanceTransactions()
+    {
+        return new AttendanceTransactions($this->client);
+    }
+
+    /**
+     * Returns the absence transactions resource.
+     *
+     * @return \KFoobar\Fortnox\Resources\Employee\AbsenceTransactions
+     */
+
+    public function absenceTransactions()
+    {
+        return new AbsenceTransactions($this->client);
     }
 
     /**
