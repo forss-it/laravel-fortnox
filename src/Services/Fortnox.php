@@ -1,7 +1,8 @@
 <?php
 
 namespace KFoobar\Fortnox\Services;
-
+use KFoobar\Fortnox\Resources\Employee\AttendanceTransactions;
+use KFoobar\Fortnox\Resources\Employee\AbsenceTransactions;
 use KFoobar\Fortnox\Resources\Account\Accounts;
 use KFoobar\Fortnox\Resources\Article\Articles;
 use KFoobar\Fortnox\Resources\CostCenter\CostCenters;
@@ -16,6 +17,8 @@ use KFoobar\Fortnox\Resources\Invoice\Invoices;
 use KFoobar\Fortnox\Resources\Supplier\SupplierInvoiceFileConnections;
 use KFoobar\Fortnox\Resources\Price\PriceLists;
 use KFoobar\Fortnox\Resources\Project\Projects;
+use KFoobar\Fortnox\Resources\Employee\ScheduleTimes;
+use KFoobar\Fortnox\Resources\Employee\SalaryTransactions;
 use KFoobar\Fortnox\Resources\Supplier\SupplierInvoices;
 use KFoobar\Fortnox\Resources\Supplier\Suppliers;
 use KFoobar\Fortnox\Resources\Template\PrintTemplates;
@@ -208,6 +211,46 @@ class Fortnox
     public function printTemplates()
     {
         return new PrintTemplates($this->client);
+    }
+
+
+    /**
+     * Returns the salary transactions resource.
+     *
+     * @return \KFoobar\Fortnox\Resources\Employee\SalaryTransactions
+     */
+    public function salaryTransactions()
+    {
+        return new SalaryTransactions($this->client);
+    }
+
+    /**
+     * Returns the attendance transactions resource.
+     *
+     * @return \KFoobar\Fortnox\Resources\Employee\AttendanceTransactions
+     */
+    public function attendanceTransactions()
+    {
+        return new AttendanceTransactions($this->client);
+    }
+
+    /**
+     * Returns the absence transactions resource.
+     *
+     * @return \KFoobar\Fortnox\Resources\Employee\AbsenceTransactions
+     */
+
+    public function absenceTransactions()
+    {
+        return new AbsenceTransactions($this->client);
+    }
+
+    /**
+     * Returns the schedule times resource.
+     * @return \KFoobar\Fortnox\Resources\Employee\ScheduleTimes
+     */
+    public function scheduleTimes() {
+        return new ScheduleTimes($this->client);
     }
 
     /**
