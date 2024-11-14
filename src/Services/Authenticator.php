@@ -83,5 +83,16 @@ class Authenticator {
     }
 
 
+    /**
+     * Revoke the access token.
+     * @return void
+     */
+    public function revoke() : void
+    {
+        Token::forget('fortnox-access-token');
+        Token::forget('fortnox-refresh-token');
+    }
+
+
 
 }
