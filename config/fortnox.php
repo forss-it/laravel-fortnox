@@ -10,4 +10,5 @@ return [
     'token_driver' => env('FORTNOX_TOKEN_DRIVER', 'cache'), #cache, session, file
     'oauth_scope' => env('FORTNOX_OAUTH_SCOPE', ''), #Comma separated list of scopes
     'oauth_redirect_url' => env('FORTNOX_REDIRECT_URL', '/'),
+
 ];

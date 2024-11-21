@@ -216,7 +216,13 @@ class Client implements ClientInterface
      */
     protected function getAccessToken(): ?string
     {
-        return Token::put('fortnox-access-token', $this->refreshAccessToken(), 3300);
+        $token = Token::get('fortnox-access-token');
+
+        if (!$token) {
+            return Token::put('fortnox-access-token', $this->refreshAccessToken(), 3300);
+        }
+        
+        return $token;
     }
 
     /**
