@@ -1,14 +1,14 @@
 <?php
 
-namespace KFoobar\Fortnox\Resources\Template;
+namespace Warbio\Fortnox\Resources\Template;
 
-use KFoobar\Fortnox\Exceptions\FortnoxException;
-use KFoobar\Fortnox\Interfaces\ClientInterface;
-use KFoobar\Fortnox\Interfaces\ResourceInterface;
-use KFoobar\Fortnox\Traits\HasCreate;
-use KFoobar\Fortnox\Traits\HasDelete;
-use KFoobar\Fortnox\Traits\HasRetrieve;
-use KFoobar\Fortnox\Traits\HasUpdate;
+use Warbio\Fortnox\Exceptions\FortnoxException;
+use Warbio\Fortnox\Interfaces\ClientInterface;
+use Warbio\Fortnox\Interfaces\ResourceInterface;
+use Warbio\Fortnox\Traits\HasCreate;
+use Warbio\Fortnox\Traits\HasDelete;
+use Warbio\Fortnox\Traits\HasRetrieve;
+use Warbio\Fortnox\Traits\HasUpdate;
 
 class PrintTemplates implements ResourceInterface
 {
@@ -20,7 +20,7 @@ class PrintTemplates implements ResourceInterface
     /**
      * Constructs a new instance.
      *
-     * @param \KFoobar\Fortnox\Interfaces\ClientInterface $client
+     * @param \Warbio\Fortnox\Interfaces\ClientInterface $client
      */
     public function __construct(ClientInterface $client)
     {
@@ -31,7 +31,7 @@ class PrintTemplates implements ResourceInterface
      * Retrieve a single print template.
      *
      * @param  mixed                                        $id
-     * @throws \KFoobar\Fortnox\Exceptions\FortnoxException
+     * @throws \Warbio\Fortnox\Exceptions\FortnoxException
      *
      * @return mixed
      */

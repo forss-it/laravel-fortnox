@@ -1,11 +1,11 @@
 <?php
-namespace KFoobar\Fortnox\Services;
-use KFoobar\Fortnox\Controllers\FortnoxOauthController;
+namespace Warbio\Fortnox\Services;
+use Warbio\Fortnox\Controllers\FortnoxOauthController;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Http;
-use KFoobar\Fortnox\Exceptions\FortnoxException;
-use KFoobar\Fortnox\Services\Token;
+use Warbio\Fortnox\Exceptions\FortnoxException;
+use Warbio\Fortnox\Services\Token;
 class Authenticator {
 
 

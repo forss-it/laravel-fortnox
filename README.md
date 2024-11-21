@@ -17,7 +17,7 @@ A Laravel package that simplifies integration with the Fortnox API.
 Install the package via Composer:
 
 ```bash
-composer require kfoobar/laravel-fortnox
+composer require Warbio/laravel-fortnox
 ```
 
 ## Environment Configuration
@@ -42,7 +42,7 @@ To authenticate with Fortnox using OAuth2, use the built-in OAuth2 routes:
 In your route file:
 
 ```php
-use KFoobar\Fortnox\Facades\FortnoxAuthenticator;
+use Warbio\Fortnox\Facades\FortnoxAuthenticator;
 
 FortnoxAuthenticator::routes();
 ```
@@ -88,7 +88,7 @@ All API operations are accessible through the `Fortnox` facade, which organizes 
 Fetch all customer records, with optional filtering and pagination:
 
 ```php
-use KFoobar\Fortnox\Facades\Fortnox;
+use Warbio\Fortnox\Facades\Fortnox;
 
 $customers = Fortnox::customers()->all([
     'filter' => 'Active', // Optional filters like 'Active' or 'Inactive'
@@ -192,7 +192,7 @@ The Fortnox API Client also allows you to upload and manage attachments. This ca
 
 #### Example on how to add an attachment to a supplier invoice
 ```php
-use KFoobar\Fortnox\Facades\Fortnox;
+use Warbio\Fortnox\Facades\Fortnox;
 
 // Step 1: Create the Supplier Invoice
 $supplierInvoice = Fortnox::supplierInvoices()->create([

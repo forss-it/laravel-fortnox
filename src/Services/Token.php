@@ -1,7 +1,7 @@
 <?php
-namespace KFoobar\Fortnox\Services;
+namespace Warbio\Fortnox\Services;
 use Illuminate\Support\Facades\Cache;
-use KFoobar\Fortnox\Exceptions\FortnoxException;
+use Warbio\Fortnox\Exceptions\FortnoxException;
 class Token
 {
 

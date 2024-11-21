@@ -1,9 +1,9 @@
 <?php
 
-namespace KFoobar\Fortnox\Commands;
+namespace Warbio\Fortnox\Commands;
 
 use Illuminate\Console\Command;
-use KFoobar\Fortnox\Services\Token;
+use Warbio\Fortnox\Services\Token;
 
 class PurgeTokensCommand extends Command
 {

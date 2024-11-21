@@ -1,6 +1,6 @@
 <?php
 
-namespace KFoobar\Fortnox\Traits;
+namespace Warbio\Fortnox\Traits;
 
 trait HasCreate
 {
