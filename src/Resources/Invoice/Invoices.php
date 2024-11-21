@@ -1,13 +1,13 @@
 <?php
 
-namespace KFoobar\Fortnox\Resources\Invoice;
+namespace Warbio\Fortnox\Resources\Invoice;
 
-use KFoobar\Fortnox\Interfaces\ClientInterface;
-use KFoobar\Fortnox\Interfaces\ResourceInterface;
-use KFoobar\Fortnox\Traits\HasCreate;
-use KFoobar\Fortnox\Traits\HasDelete;
-use KFoobar\Fortnox\Traits\HasRetrieve;
-use KFoobar\Fortnox\Traits\HasUpdate;
+use Warbio\Fortnox\Interfaces\ClientInterface;
+use Warbio\Fortnox\Interfaces\ResourceInterface;
+use Warbio\Fortnox\Traits\HasCreate;
+use Warbio\Fortnox\Traits\HasDelete;
+use Warbio\Fortnox\Traits\HasRetrieve;
+use Warbio\Fortnox\Traits\HasUpdate;
 
 class Invoices implements ResourceInterface
 {
@@ -21,7 +21,7 @@ class Invoices implements ResourceInterface
     /**
      * Constructs a new instance.
      *
-     * @param \KFoobar\Fortnox\Interfaces\ClientInterface $client
+     * @param \Warbio\Fortnox\Interfaces\ClientInterface $client
      */
     public function __construct(ClientInterface $client)
     {

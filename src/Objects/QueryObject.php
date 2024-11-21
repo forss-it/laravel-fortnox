@@ -1,8 +1,8 @@
 <?php
 
-namespace KFoobar\Fortnox\Objects;
+namespace Warbio\Fortnox\Objects;
 
-use KFoobar\Fortnox\Exceptions\FortnoxException;
+use Warbio\Fortnox\Exceptions\FortnoxException;
 
 class QueryObject
 {

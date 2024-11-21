@@ -1,6 +1,6 @@
 <?php
 
-namespace KFoobar\Fortnox\Facades;
+namespace Warbio\Fortnox\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
@@ -13,6 +13,6 @@ class Fortnox extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return \KFoobar\Fortnox\Services\Fortnox::class;
+        return \Warbio\Fortnox\Services\Fortnox::class;
     }
 }

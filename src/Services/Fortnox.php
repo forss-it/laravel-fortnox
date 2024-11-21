@@ -1,33 +1,33 @@
 <?php
 
-namespace KFoobar\Fortnox\Services;
-use KFoobar\Fortnox\Resources\Employee\AttendanceTransactions;
-use KFoobar\Fortnox\Resources\Employee\AbsenceTransactions;
-use KFoobar\Fortnox\Resources\Account\Accounts;
-use KFoobar\Fortnox\Resources\Article\Articles;
-use KFoobar\Fortnox\Resources\CostCenter\CostCenters;
-use KFoobar\Fortnox\Resources\Currency\Currencies;
-use KFoobar\Fortnox\Resources\Customer\Customers;
-use KFoobar\Fortnox\Resources\Employee\Employees;
-use KFoobar\Fortnox\Resources\FinancialYear\FinancialYears;
-use KFoobar\Fortnox\Resources\Invoice\InvoiceAccruals;
-use KFoobar\Fortnox\Resources\Invoice\InvoicePayments;
-use KFoobar\Fortnox\Resources\Inbox\Inbox;
-use KFoobar\Fortnox\Resources\Invoice\Invoices;
-use KFoobar\Fortnox\Resources\Supplier\SupplierInvoiceFileConnections;
-use KFoobar\Fortnox\Resources\Price\PriceLists;
-use KFoobar\Fortnox\Resources\Project\Projects;
-use KFoobar\Fortnox\Resources\Employee\ScheduleTimes;
-use KFoobar\Fortnox\Resources\Employee\SalaryTransactions;
-use KFoobar\Fortnox\Resources\Supplier\SupplierInvoices;
-use KFoobar\Fortnox\Resources\Supplier\Suppliers;
-use KFoobar\Fortnox\Resources\Template\PrintTemplates;
-use KFoobar\Fortnox\Resources\Terms\TermsOfDeliveries;
-use KFoobar\Fortnox\Resources\Terms\TermsOfPayments;
-use KFoobar\Fortnox\Resources\Unit\Units;
-use KFoobar\Fortnox\Resources\Voucher\VoucherSeries;
-use KFoobar\Fortnox\Resources\Voucher\Vouchers;
-use KFoobar\Fortnox\Services\Client;
+namespace Warbio\Fortnox\Services;
+use Warbio\Fortnox\Resources\Employee\AttendanceTransactions;
+use Warbio\Fortnox\Resources\Employee\AbsenceTransactions;
+use Warbio\Fortnox\Resources\Account\Accounts;
+use Warbio\Fortnox\Resources\Article\Articles;
+use Warbio\Fortnox\Resources\CostCenter\CostCenters;
+use Warbio\Fortnox\Resources\Currency\Currencies;
+use Warbio\Fortnox\Resources\Customer\Customers;
+use Warbio\Fortnox\Resources\Employee\Employees;
+use Warbio\Fortnox\Resources\FinancialYear\FinancialYears;
+use Warbio\Fortnox\Resources\Invoice\InvoiceAccruals;
+use Warbio\Fortnox\Resources\Invoice\InvoicePayments;
+use Warbio\Fortnox\Resources\Inbox\Inbox;
+use Warbio\Fortnox\Resources\Invoice\Invoices;
+use Warbio\Fortnox\Resources\Supplier\SupplierInvoiceFileConnections;
+use Warbio\Fortnox\Resources\Price\PriceLists;
+use Warbio\Fortnox\Resources\Project\Projects;
+use Warbio\Fortnox\Resources\Employee\ScheduleTimes;
+use Warbio\Fortnox\Resources\Employee\SalaryTransactions;
+use Warbio\Fortnox\Resources\Supplier\SupplierInvoices;
+use Warbio\Fortnox\Resources\Supplier\Suppliers;
+use Warbio\Fortnox\Resources\Template\PrintTemplates;
+use Warbio\Fortnox\Resources\Terms\TermsOfDeliveries;
+use Warbio\Fortnox\Resources\Terms\TermsOfPayments;
+use Warbio\Fortnox\Resources\Unit\Units;
+use Warbio\Fortnox\Resources\Voucher\VoucherSeries;
+use Warbio\Fortnox\Resources\Voucher\Vouchers;
+use Warbio\Fortnox\Services\Client;
 
 class Fortnox
 {
@@ -45,7 +45,7 @@ class Fortnox
     /**
      * Returns the accounts resource.
      *
-     * @return \KFoobar\Fortnox\Resources\Account\Accounts
+     * @return \Warbio\Fortnox\Resources\Account\Accounts
      */
     public function accounts()
     {
@@ -55,7 +55,7 @@ class Fortnox
     /**
      * Returns the articles resource.
      *
-     * @return \KFoobar\Fortnox\Resources\Article\Articles
+     * @return \Warbio\Fortnox\Resources\Article\Articles
      */
     public function articles()
     {
@@ -65,7 +65,7 @@ class Fortnox
     /**
      * Returns the cost centers resource.
      *
-     * @return \KFoobar\Fortnox\Resources\CostCenter\CostCenters
+     * @return \Warbio\Fortnox\Resources\CostCenter\CostCenters
      */
     public function costCenters()
     {
@@ -75,7 +75,7 @@ class Fortnox
     /**
      * Returns the currencies resource.
      *
-     * @return \KFoobar\Fortnox\Resources\Currency\Currencies
+     * @return \Warbio\Fortnox\Resources\Currency\Currencies
      */
     public function currencies()
     {
@@ -85,7 +85,7 @@ class Fortnox
     /**
      * Returns the customers resource.
      *
-     * @return \KFoobar\Fortnox\Resources\Customer\Customers
+     * @return \Warbio\Fortnox\Resources\Customer\Customers
      */
     public function customers()
     {
@@ -96,7 +96,7 @@ class Fortnox
     /**
      * Returns the eomployees resource.
      *
-     * @return \KFoobar\Fortnox\Resources\Customer\Employees
+     * @return \Warbio\Fortnox\Resources\Customer\Employees
      */
     public function employees()
     {
@@ -107,7 +107,7 @@ class Fortnox
     /**
      * Returns the financial years resource.
      *
-     * @return \KFoobar\Fortnox\Resources\FinancialYear\FinancialYears
+     * @return \Warbio\Fortnox\Resources\FinancialYear\FinancialYears
      */
     public function financialYears()
     {
@@ -117,7 +117,7 @@ class Fortnox
     /**
      * Returns the inbox resource.
      *
-     * @return \KFoobar\Fortnox\Resources\Inbox\Inboxes
+     * @return \Warbio\Fortnox\Resources\Inbox\Inboxes
      */
     public function inbox() {
         return new Inbox($this->client);
@@ -126,7 +126,7 @@ class Fortnox
     /**
      * Returns the invoices resource.
      *
-     * @return \KFoobar\Fortnox\Resources\Invoice\Invoices
+     * @return \Warbio\Fortnox\Resources\Invoice\Invoices
      */
     public function invoices()
     {
@@ -136,7 +136,7 @@ class Fortnox
     /**
      * Returns the invoices accruals resource.
      *
-     * @return \KFoobar\Fortnox\Resources\Invoice\InvoiceAccruals
+     * @return \Warbio\Fortnox\Resources\Invoice\InvoiceAccruals
      */
     public function invoiceAccruals()
     {
@@ -146,7 +146,7 @@ class Fortnox
     /**
      * Returns the invoices payments resource.
      *
-     * @return \KFoobar\Fortnox\Resources\Invoice\InvoicePayments
+     * @return \Warbio\Fortnox\Resources\Invoice\InvoicePayments
      */
     public function invoicePayments()
     {
@@ -156,7 +156,7 @@ class Fortnox
     /**
      * Returns the price lists resource.
      *
-     * @return \KFoobar\Fortnox\Resources\Price\PriceLists
+     * @return \Warbio\Fortnox\Resources\Price\PriceLists
      */
     public function priceLists()
     {
@@ -166,7 +166,7 @@ class Fortnox
     /**
      * Returns the projects resource.
      *
-     * @return \KFoobar\Fortnox\Resources\Account\Projects
+     * @return \Warbio\Fortnox\Resources\Account\Projects
      */
     public function projects()
     {
@@ -176,7 +176,7 @@ class Fortnox
     /**
      * Returns the supplier invoices resource.
      *
-     * @return \KFoobar\Fortnox\Resources\Supplier\SupplierInvoices
+     * @return \Warbio\Fortnox\Resources\Supplier\SupplierInvoices
      */
     public function supplierInvoices()
     {
@@ -186,7 +186,7 @@ class Fortnox
     /**
      * Returns the suppliers resource.
      *
-     * @return \KFoobar\Fortnox\Resources\Supplier\Suppliers
+     * @return \Warbio\Fortnox\Resources\Supplier\Suppliers
      */
     public function suppliers()
     {
@@ -196,7 +196,7 @@ class Fortnox
     /**
      * Returns the supplier invoice file connections resource.
      *
-     * @return \KFoobar\Fortnox\Resources\Supplier\SupplierInvoiceFileConnections
+     * @return \Warbio\Fortnox\Resources\Supplier\SupplierInvoiceFileConnections
      */
     public function supplierInvoiceFileConnections()
     {
@@ -206,7 +206,7 @@ class Fortnox
     /**
      * Returns the print templates resource.
      *
-     * @return \KFoobar\Fortnox\Resources\Template\PrintTemplates
+     * @return \Warbio\Fortnox\Resources\Template\PrintTemplates
      */
     public function printTemplates()
     {
@@ -217,7 +217,7 @@ class Fortnox
     /**
      * Returns the salary transactions resource.
      *
-     * @return \KFoobar\Fortnox\Resources\Employee\SalaryTransactions
+     * @return \Warbio\Fortnox\Resources\Employee\SalaryTransactions
      */
     public function salaryTransactions()
     {
@@ -227,7 +227,7 @@ class Fortnox
     /**
      * Returns the attendance transactions resource.
      *
-     * @return \KFoobar\Fortnox\Resources\Employee\AttendanceTransactions
+     * @return \Warbio\Fortnox\Resources\Employee\AttendanceTransactions
      */
     public function attendanceTransactions()
     {
@@ -237,7 +237,7 @@ class Fortnox
     /**
      * Returns the absence transactions resource.
      *
-     * @return \KFoobar\Fortnox\Resources\Employee\AbsenceTransactions
+     * @return \Warbio\Fortnox\Resources\Employee\AbsenceTransactions
      */
 
     public function absenceTransactions()
@@ -247,7 +247,7 @@ class Fortnox
 
     /**
      * Returns the schedule times resource.
-     * @return \KFoobar\Fortnox\Resources\Employee\ScheduleTimes
+     * @return \Warbio\Fortnox\Resources\Employee\ScheduleTimes
      */
     public function scheduleTimes() {
         return new ScheduleTimes($this->client);
@@ -256,7 +256,7 @@ class Fortnox
     /**
      * Returns the terms of deliveries resource.
      *
-     * @return \KFoobar\Fortnox\Resources\Terms\TermsOfDeliveries
+     * @return \Warbio\Fortnox\Resources\Terms\TermsOfDeliveries
      */
     public function termsOfDeliveries()
     {
@@ -266,7 +266,7 @@ class Fortnox
     /**
      * Returns the terms of payments resource.
      *
-     * @return \KFoobar\Fortnox\Resources\Terms\TermsOfPayments
+     * @return \Warbio\Fortnox\Resources\Terms\TermsOfPayments
      */
     public function termsOfPayments()
     {
@@ -276,7 +276,7 @@ class Fortnox
     /**
      * Returns the units resource.
      *
-     * @return \KFoobar\Fortnox\Resources\Unit\Units
+     * @return \Warbio\Fortnox\Resources\Unit\Units
      */
     public function units()
     {
@@ -286,7 +286,7 @@ class Fortnox
     /**
      * Returns the vouchers resource.
      *
-     * @return \KFoobar\Fortnox\Resources\Voucher\Vouchers
+     * @return \Warbio\Fortnox\Resources\Voucher\Vouchers
      */
     public function vouchers()
     {
@@ -296,7 +296,7 @@ class Fortnox
     /**
      * Returns the voucher series resource.
      *
-     * @return \KFoobar\Fortnox\Resources\Voucher\VoucherSeries
+     * @return \Warbio\Fortnox\Resources\Voucher\VoucherSeries
      */
     public function voucherSeries()
     {

@@ -1,11 +1,11 @@
 <?php
 
-namespace KFoobar\Fortnox;
+namespace Warbio\Fortnox;
 
 use Illuminate\Support\ServiceProvider;
-use KFoobar\Fortnox\Commands\DisplayTokensCommand;
-use KFoobar\Fortnox\Commands\PurgeTokensCommand;
-use KFoobar\Fortnox\Commands\RefreshTokensCommand;
+use Warbio\Fortnox\Commands\DisplayTokensCommand;
+use Warbio\Fortnox\Commands\PurgeTokensCommand;
+use Warbio\Fortnox\Commands\RefreshTokensCommand;
 
 class FortnoxServiceProvider extends ServiceProvider
 {

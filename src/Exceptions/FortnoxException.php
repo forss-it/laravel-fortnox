@@ -1,6 +1,6 @@
 <?php
 
-namespace KFoobar\Fortnox\Exceptions;
+namespace Warbio\Fortnox\Exceptions;
 
 class FortnoxException extends \Exception
 {

@@ -1,9 +1,9 @@
 <?php
 
-namespace KFoobar\Fortnox\Commands;
+namespace Warbio\Fortnox\Commands;
 
 use Illuminate\Console\Command;
-use KFoobar\Fortnox\Services\Client;
+use Warbio\Fortnox\Services\Client;
 
 class RefreshTokensCommand extends Command
 {

@@ -1,5 +1,5 @@
 {
-    "name": "kfoobar/laravel-fortnox",
+    "name": "warbio/laravel-fortnox",
     "description": "Fortnox API Client for Laravel",
     "keywords": ["laravel", "fortnox", "bookkeep", "api"],
     "license": "MIT",
@@ -12,10 +12,14 @@
     },
     "autoload": {
         "psr-4": {
-            "KFoobar\\Fortnox\\": "src/"
+            "Warbio\\Fortnox\\": "src/"
         }
     },
     "authors": [
+        {
+            "name": "Markus Moqvist",
+            "email": "markus@stromgrensolutions.se"
+        },
         {
             "name": "David Villa",
             "email": "david@kfoobar.se"
@@ -24,11 +28,11 @@
     "extra": {
         "laravel": {
             "providers": [
-                "KFoobar\\Fortnox\\FortnoxServiceProvider"
+                "Warbio\\Fortnox\\FortnoxServiceProvider"
             ],
             "aliases": {
-                "Fortnox": "KFoobar\\Fortnox\\Facades\\Fortnox",
-                "FortnoxAuthenticator": "KFoobar\\Fortnox\\Facades\\FortnoxAuthenticator"
+                "Fortnox": "Warbio\\Fortnox\\Facades\\Fortnox",
+                "FortnoxAuthenticator": "Warbio\\Fortnox\\Facades\\FortnoxAuthenticator"
             }
         }
     }

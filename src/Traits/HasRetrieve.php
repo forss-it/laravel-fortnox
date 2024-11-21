@@ -1,8 +1,8 @@
 <?php
 
-namespace KFoobar\Fortnox\Traits;
+namespace Warbio\Fortnox\Traits;
 
-use KFoobar\Fortnox\Objects\QueryObject;
+use Warbio\Fortnox\Objects\QueryObject;
 
 trait HasRetrieve
 {
@@ -10,7 +10,7 @@ trait HasRetrieve
      * Sends an get request for a single item.
      *
      * @param mixed                                 $id
-     * @param \KFoobar\Fortnox\Services\QueryObject $query
+     * @param \Warbio\Fortnox\Services\QueryObject $query
      *
      * @return mixed
      */
@@ -26,7 +26,7 @@ trait HasRetrieve
     /**
      * Sends an get request for all items.
      *
-     * @param \KFoobar\Fortnox\Services\QueryObject $query
+     * @param \Warbio\Fortnox\Services\QueryObject $query
      *
      * @return mixed
      */

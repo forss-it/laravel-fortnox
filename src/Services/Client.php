@@ -1,13 +1,13 @@
 <?php
 
-namespace KFoobar\Fortnox\Services;
+namespace Warbio\Fortnox\Services;
 
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
-use KFoobar\Fortnox\Exceptions\FortnoxException;
-use KFoobar\Fortnox\Interfaces\ClientInterface;
-use KFoobar\Fortnox\Services\Token;
+use Warbio\Fortnox\Exceptions\FortnoxException;
+use Warbio\Fortnox\Interfaces\ClientInterface;
+use Warbio\Fortnox\Services\Token;
 use Psr\Http\Message\RequestInterface;
 use GuzzleHttp\Middleware;
 
@@ -159,7 +159,7 @@ class Client implements ClientInterface
      *
      * @param  \Illuminate\Http\Client\Response             $response
      *
-     * @throws \KFoobar\Fortnox\Exceptions\FortnoxException (description)
+     * @throws \Warbio\Fortnox\Exceptions\FortnoxException (description)
      *
      * @return void
      */
@@ -228,7 +228,7 @@ class Client implements ClientInterface
     /**
      * Gets the refresh token.
      *
-     * @throws \KFoobar\Fortnox\Exceptions\FortnoxException
+     * @throws \Warbio\Fortnox\Exceptions\FortnoxException
      *
      * @return string
      */
@@ -260,7 +260,7 @@ class Client implements ClientInterface
      * Refreshes the access and refresh token.
      * Cache is set to 25 day (2160000).
      *
-     * @throws \KFoobar\Fortnox\Exceptions\FortnoxException
+     * @throws \Warbio\Fortnox\Exceptions\FortnoxException
      *
      * @return string
      */

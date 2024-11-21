@@ -1,14 +1,14 @@
 <?php
 
-namespace KFoobar\Fortnox\Resources\Voucher;
+namespace Warbio\Fortnox\Resources\Voucher;
 
-use KFoobar\Fortnox\Interfaces\ClientInterface;
-use KFoobar\Fortnox\Interfaces\ResourceInterface;
-use KFoobar\Fortnox\Services\QueryObject;
-use KFoobar\Fortnox\Traits\HasCreate;
-use KFoobar\Fortnox\Traits\HasDelete;
-use KFoobar\Fortnox\Traits\HasRetrieve;
-use KFoobar\Fortnox\Traits\HasUpdate;
+use Warbio\Fortnox\Interfaces\ClientInterface;
+use Warbio\Fortnox\Interfaces\ResourceInterface;
+use Warbio\Fortnox\Services\QueryObject;
+use Warbio\Fortnox\Traits\HasCreate;
+use Warbio\Fortnox\Traits\HasDelete;
+use Warbio\Fortnox\Traits\HasRetrieve;
+use Warbio\Fortnox\Traits\HasUpdate;
 
 class Vouchers implements ResourceInterface
 {
@@ -21,7 +21,7 @@ class Vouchers implements ResourceInterface
     /**
      * Constructs a new instance.
      *
-     * @param \KFoobar\Fortnox\Interfaces\ClientInterface $client
+     * @param \Warbio\Fortnox\Interfaces\ClientInterface $client
      */
     public function __construct(ClientInterface $client)
     {
@@ -33,7 +33,7 @@ class Vouchers implements ResourceInterface
      *
      * @param mixed                                 $series
      * @param mixed                                 $number
-     * @param \KFoobar\Fortnox\Services\QueryObject $query
+     * @param \Warbio\Fortnox\Services\QueryObject $query
      *
      * @return mixed
      */
@@ -48,7 +48,7 @@ class Vouchers implements ResourceInterface
      * Retrieve a list of vouchers for a specific series.
      *
      * @param mixed                                 $series
-     * @param \KFoobar\Fortnox\Services\QueryObject $query
+     * @param \Warbio\Fortnox\Services\QueryObject $query
      *
      * @return mixed
      */

@@ -1,6 +1,6 @@
 <?php
-namespace KFoobar\Fortnox\Controllers;
-use KFoobar\Fortnox\Facades\FortnoxAuthenticator;
+namespace Warbio\Fortnox\Controllers;
+use Warbio\Fortnox\Facades\FortnoxAuthenticator;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Cache;
 class FortnoxOauthController extends Controller 

@@ -1,6 +1,6 @@
 <?php
 
-namespace KFoobar\Fortnox\Interfaces;
+namespace Warbio\Fortnox\Interfaces;
 
 interface ClientInterface
 {
