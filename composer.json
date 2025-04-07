@@ -1,5 +1,5 @@
 {
-    "name": "warbio/laravel-fortnox",
+    "name": "forss-it/laravel-fortnox",
     "description": "Fortnox API Client for Laravel",
     "keywords": ["laravel", "fortnox", "bookkeep", "api"],
     "license": "MIT",
