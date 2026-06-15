@@ -43,6 +43,8 @@ class Client implements ClientInterface
             $this->catchError($response);
         }
 
+        $this->clearInvalidRefreshTokenIfMarked();
+
         return $response;
     }
 
@@ -61,6 +63,8 @@ class Client implements ClientInterface
         if ($response->failed()) {
             $this->catchError($response);
         }
+
+        $this->clearInvalidRefreshTokenIfMarked();
 
         return $response;
     }
@@ -82,6 +86,8 @@ class Client implements ClientInterface
             $this->catchError($response);
         }
 
+        $this->clearInvalidRefreshTokenIfMarked();
+
         return $response;
     }
 
@@ -100,6 +106,8 @@ class Client implements ClientInterface
         if ($response->failed()) {
             $this->catchError($response);
         }
+
+        $this->clearInvalidRefreshTokenIfMarked();
 
         return $response;
     }
@@ -139,6 +147,8 @@ class Client implements ClientInterface
         if ($response->failed()) {
             $this->catchError($response);
         }
+
+        $this->clearInvalidRefreshTokenIfMarked();
 
         return $response->json();
     }
@@ -339,5 +349,19 @@ class Client implements ClientInterface
         return str_contains($normalizedMessage, 'refresh token not found')
             || str_contains($normalizedMessage, 'refresh token not valid')
             || str_contains($normalizedMessage, 'invalid refresh token');
+    }
+
+    /**
+     * Clear invalid refresh token marker after a successful Fortnox API call.
+     *
+     * @return void
+     */
+    protected function clearInvalidRefreshTokenIfMarked(): void
+    {
+        if (!Token::isRefreshTokenInvalid()) {
+            return;
+        }
+
+        Token::clearInvalidRefreshToken();
     }
 }
