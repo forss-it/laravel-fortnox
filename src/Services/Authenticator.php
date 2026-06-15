@@ -1,7 +1,6 @@
 <?php
 namespace Warbio\Fortnox\Services;
 use Warbio\Fortnox\Controllers\FortnoxOauthController;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Http;
 use Warbio\Fortnox\Exceptions\FortnoxException;
@@ -20,7 +19,7 @@ class Authenticator {
         if(is_null($state)) {
             $state = bin2hex(random_bytes(16));
         }
-        
+
         $query = http_build_query([
             'client_id'     => config('fortnox.client_id'),
             'redirect_uri'  => route('fortnox.oauth.callback'),
@@ -40,7 +39,7 @@ class Authenticator {
      * @param string $code
      * @return void
      */
-    public function authorize(string $code) : void 
+    public function authorize(string $code) : void
     {
         $response = Http::withBasicAuth(config('fortnox.client_id'), config('fortnox.client_secret'))
             ->asForm()
@@ -49,7 +48,7 @@ class Authenticator {
                 'code'          => $code,
                 'redirect_uri'  => route('fortnox.oauth.callback'),
             ]);
-        
+
         if ($response->failed()) {
             throw new FortnoxException('Failed to authorize.');
         }
@@ -60,13 +59,14 @@ class Authenticator {
 
         Token::put('fortnox-access-token', $response->json('access_token'), $response->json('expires_in'));
         Token::put('fortnox-refresh-token', $response->json('refresh_token'), 2160000);
+        Token::clearInvalidRefreshToken();
     }
 
     /**
      * Register laravel routes.
      * @return void
      */
-    public function routes() 
+    public function routes()
     {
         Route::get('fortnox/oauth/authorize', [FortnoxOauthController::class, 'authorize'])->name('fortnox.oauth.authorize');
         Route::get('fortnox/oauth/callback', [FortnoxOauthController::class, 'callback'])->name('fortnox.oauth.callback');
@@ -79,6 +79,10 @@ class Authenticator {
      */
     public function isAuthenticated() : bool
     {
+        if (Token::isRefreshTokenInvalid()) {
+            return false;
+        }
+
         return !empty(Token::get('fortnox-access-token')) || !empty(Token::get('fortnox-refresh-token'));
     }
 
@@ -91,6 +95,7 @@ class Authenticator {
     {
         Token::forget('fortnox-access-token');
         Token::forget('fortnox-refresh-token');
+        Token::clearInvalidRefreshToken();
     }
 
 

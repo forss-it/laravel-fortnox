@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Cache;
 use Warbio\Fortnox\Exceptions\FortnoxException;
 class Token
 {
+    private const REFRESH_TOKEN_INVALID_CACHE_KEY = 'fortnox-refresh-token-invalid';
 
     /**
      * Get a token
@@ -94,6 +95,36 @@ class Token
             default:
                 throw new FortnoxException('Invalid token driver: '.config('fortnox.token_driver'));
         }
+    }
+
+    /**
+     * Mark the current refresh token as invalid.
+     *
+     * @return void
+     */
+    public static function markRefreshTokenInvalid() : void
+    {
+        Cache::forever(self::REFRESH_TOKEN_INVALID_CACHE_KEY, true);
+    }
+
+    /**
+     * Clear the invalid refresh token marker.
+     *
+     * @return void
+     */
+    public static function clearInvalidRefreshToken() : void
+    {
+        Cache::forget(self::REFRESH_TOKEN_INVALID_CACHE_KEY);
+    }
+
+    /**
+     * Check if the current refresh token is marked invalid.
+     *
+     * @return bool
+     */
+    public static function isRefreshTokenInvalid() : bool
+    {
+        return Cache::has(self::REFRESH_TOKEN_INVALID_CACHE_KEY);
     }
 
 
